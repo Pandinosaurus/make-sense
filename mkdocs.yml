@@ -15,7 +15,7 @@ copyright: Copyright &copy; 2019 Piotr Skalski
 
 # Customization
 extra:
-  version: 1.7.0-alpha
+  version: 1.11.0-alpha
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/SkalskiP
@@ -47,6 +47,11 @@ theme:
     - navigation.expand
   icon:
     repo: fontawesome/brands/github
+    
+# Google Analytics
+google_analytics:
+  - 'UA-155837750-2'
+  - 'auto'
 
 # Extensions
 markdown_extensions:

@@ -7,11 +7,15 @@ import {AIPoseDetectionActions} from '../logic/actions/AIPoseDetectionActions';
 import {LabelType} from '../data/enums/LabelType';
 import {LabelsSelector} from '../store/selectors/LabelsSelector';
 import {updateActiveLabelType} from '../store/labels/actionCreators';
+import {submitNewNotification} from '../store/notifications/actionCreators';
+import {NotificationUtil} from '../utils/NotificationUtil';
+import {NotificationsDataMap} from '../data/info/NotificationsData';
+import {Notification} from '../data/enums/Notification';
 
 export class PoseDetector {
     private static model: PoseNet;
 
-    public static loadModel(callback?: () => any) {
+    public static loadModel(callback?: () => unknown) {
         posenet
             .load({
                 architecture: 'ResNet50',
@@ -32,12 +36,18 @@ export class PoseDetector {
                 }
             })
             .catch((error) => {
-                // TODO
-                throw new Error(error as string);
+                // TODO: Introduce central logging system like Sentry
+                store.dispatch(
+                    submitNewNotification(
+                        NotificationUtil.createErrorNotification(
+                            NotificationsDataMap[Notification.MODEL_DOWNLOAD_ERROR]
+                        )
+                    )
+                )
             })
     }
 
-    public static predict(image: HTMLImageElement, callback?: (predictions: Pose[]) => any) {
+    public static predict(image: HTMLImageElement, callback?: (predictions: Pose[]) => unknown) {
         if (!PoseDetector.model) return;
 
         PoseDetector.model
@@ -48,8 +58,14 @@ export class PoseDetector {
                 }
             })
             .catch((error) => {
-                // TODO
-                throw new Error(error as string);
+                // TODO: Introduce central logging system like Sentry
+                store.dispatch(
+                    submitNewNotification(
+                        NotificationUtil.createErrorNotification(
+                            NotificationsDataMap[Notification.MODEL_INFERENCE_ERROR]
+                        )
+                    )
+                )
             })
     }
 }

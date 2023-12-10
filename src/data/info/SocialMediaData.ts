@@ -1,4 +1,4 @@
-import {Settings} from "../../settings/Settings";
+import {Settings} from '../../settings/Settings';
 
 export interface ISocialMedia {
     displayName:string;
@@ -10,24 +10,31 @@ export interface ISocialMedia {
 
 export const SocialMediaData: ISocialMedia[] = [
     {
-        displayName: "Github",
-        imageSrc: "/ico/github-logo.png",
-        imageAlt: "GitHub Logo",
+        displayName: 'Github',
+        imageSrc: '/ico/github-logo.png',
+        imageAlt: 'GitHub',
         href: Settings.GITHUB_URL,
-        tooltipMessage: "Show me some love on GitHub",
+        tooltipMessage: 'Show us some love ⭐ on GitHub',
     },
     {
-        displayName: "Medium",
-        imageSrc: "/ico/medium-logo.png",
-        imageAlt: "Medium Logo",
+        displayName: 'Medium',
+        imageSrc: '/ico/medium-logo.png',
+        imageAlt: 'Medium',
         href: Settings.MEDIUM_URL,
-        tooltipMessage: "Read my AI content on Medium",
+        tooltipMessage: 'Read our AI content on Medium',
     },
     {
-        displayName: "Patreon",
-        imageSrc: "/ico/patreon-logo.png",
-        imageAlt: "Patreon Logo",
-        href: Settings.PATREON_URL,
-        tooltipMessage: "Support Make Sense on Patreon and help it grow"
+        displayName: 'YouTube',
+        imageSrc: '/ico/youtube-logo.png',
+        imageAlt: 'YouTube',
+        href: Settings.YOUTUBE_URL,
+        tooltipMessage: 'Watch our AI tutorials on YouTube'
+    },
+    {
+        displayName: 'Twitch',
+        imageSrc: '/ico/twitch-logo.png',
+        imageAlt: 'Twitch',
+        href: Settings.TWITCH_URL,
+        tooltipMessage: 'Fight along with us in Kaggle competitions on Twitch'
     },
 ];
